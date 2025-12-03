@@ -1,0 +1,11 @@
+<form method="post" enctype="multipart/form-data" asp-controller="Image" asp-action="Upload">
+    <input type="text" name="title" placeholder="Titel" required />
+    <textarea name="description" placeholder="Beskrivelse"></textarea>
+    <input type="file" name="imageFile" accept="image/*" required />
+    <button type="submit">Upload</button>
+</form>
+
+<button id="countBtn">Hent antal billeder</button>
+<div id="countResult"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/site.js"></script>

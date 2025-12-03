@@ -18,11 +18,31 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Login()
     {
         return View();
     }
 
+    public IActionResult Gallery()
+    {
+        return View();
+    }
+    
+    public IActionResult Brugere()
+    {
+        return View();
+    }
+    
+    public IActionResult Register()
+    {
+        return  View();
+    }
+    
+    public IActionResult Upload()
+    {
+        return View();
+    }
+    
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

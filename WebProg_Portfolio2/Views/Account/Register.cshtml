@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Register";
+}
+<h2>Register</h2>
+<form method="post" asp-controller="Account" asp-action="Register">
+    <input name="username" placeholder="Brugernavn" required />
+    <input name="email" placeholder="E-mail" type="email" required />
+    <input name="password" placeholder="Adgangskode" type="password" required />
+    <button type="submit">Opret</button>
+</form>
+@section scripts {
+    <script src="~/js/site.js"></script> <!-- klient-side regex validation -->
+}

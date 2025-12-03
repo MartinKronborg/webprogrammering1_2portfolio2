@@ -1,0 +1,30 @@
+@model IEnumerable<ImagesModel>
+
+<h2>Galleri</h2>
+
+<div class="gallery">
+    @foreach(var img in Model)
+    {
+        <div class="gallery-item">
+            <img src="@img.FilePath" alt="@img.Title" />
+            <h4>@img.Title</h4>
+            <p>@img.Description</p>
+            <small>Uploadet af: @img.User.Username</small>
+        </div>
+    }
+</div>
+
+<style>
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+@@media (max-width: 600px) {
+    .gallery { grid-template-columns: 1fr; }
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+}
+</style>
