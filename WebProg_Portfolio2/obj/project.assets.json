@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "/Users/martinkronborg/.nuget/packages/": {}
+    "C:\\Users\\emilr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/martinkronborg/Desktop/Webprog1_2Portfolio2/webprogrammering1_2portfolio2/WebProg_Portfolio2/WebProg_Portfolio2.csproj",
+      "projectUniqueName": "C:\\Users\\emilr\\Documents\\SPILTEK\\Git\\webprogrammering1_portfolio_02\\webprogrammering1_2portfolio2\\WebProg_Portfolio2\\WebProg_Portfolio2.csproj",
       "projectName": "WebProg_Portfolio2",
-      "projectPath": "/Users/martinkronborg/Desktop/Webprog1_2Portfolio2/webprogrammering1_2portfolio2/WebProg_Portfolio2/WebProg_Portfolio2.csproj",
-      "packagesPath": "/Users/martinkronborg/.nuget/packages/",
-      "outputPath": "/Users/martinkronborg/Desktop/Webprog1_2Portfolio2/webprogrammering1_2portfolio2/WebProg_Portfolio2/obj/",
+      "projectPath": "C:\\Users\\emilr\\Documents\\SPILTEK\\Git\\webprogrammering1_portfolio_02\\webprogrammering1_2portfolio2\\WebProg_Portfolio2\\WebProg_Portfolio2.csproj",
+      "packagesPath": "C:\\Users\\emilr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\emilr\\Documents\\SPILTEK\\Git\\webprogrammering1_portfolio_02\\webprogrammering1_2portfolio2\\WebProg_Portfolio2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/martinkronborg/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\emilr\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -44,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -68,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
