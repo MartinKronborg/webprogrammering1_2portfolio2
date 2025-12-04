@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using WebProg_Portfolio2.Models;
 using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebProg_Portfolio2.Controllers;
 
@@ -9,6 +10,12 @@ public class ImagesController : Controller
 {
     private int? CurrentUserId() => HttpContext.Session.GetInt32("UserId");
 
+    private readonly AppDbContext _database;
+
+    public ImagesController(AppDbContext database)
+    {
+        _database = database;
+    }
 
     [HttpGet]
     public IActionResult Upload()
@@ -46,39 +53,42 @@ public class ImagesController : Controller
         {
             await imageFile.CopyToAsync(stream);
         }
+
+        var post = new ImagesModel
+        {
+            Title = title,
+            Description = description,
+            FilePath = "/uploads/" + fileName,
+            UserId = CurrentUserId().Value
+        };
+
+        _database.Images.Add(post);
+        await _database.SaveChangesAsync();
+
+        return RedirectToAction("Gallery");
+
         return View();
     }
 
     [HttpGet]
     public IActionResult Gallery()
     {
-        return RedirectToAction("Gallery", "Images");
+        if (CurrentUserId() == null)
+            return RedirectToAction("Login", "Account");
+
+        var images = _database.Images
+            .Where(i => i.UserId == CurrentUserId())
+            .Include(i => i.User)
+            .ToList();
+
+        return View(images);
     }
-    
+
+    [HttpGet]
+    public IActionResult GetCount()
+    {
+        if (CurrentUserId() == null) return Json(new { success = false });
+        var count = _database.Images.Count();
+        return Json(new { success = true, count });
+    }
 }
-
-
-
-
-
-/*
-var post = new ImagePost {
-    Title = title,
-    Description = description,
-    FilePath = "/uploads/" + fileName,
-    UserId = CurrentUserId().Value
-};
-_database.ImagePosts.Add(post);
-await _database.SaveChangesAsync();
-return RedirectToAction("Gallery");
-}*/
-
-/*
-[HttpGet]
-public IActionResult GetCount()
-{
-    if (CurrentUserId() == null) return Json(new { success = false });
-    var count = _database.ImagePosts.Count();
-    return Json(new { success = true, count });
-}
-*/
