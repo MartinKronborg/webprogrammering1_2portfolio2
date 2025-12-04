@@ -54,6 +54,7 @@ public class ImagesController : Controller
             await imageFile.CopyToAsync(stream);
         }
 
+        //NOT WORKING - ADDING IMAGE METADATA TO DB
         var post = new ImagesModel
         {
             Title = title,
@@ -70,6 +71,7 @@ public class ImagesController : Controller
         return View();
     }
 
+    //NOT working? Images don't show up in the gallery view
     [HttpGet]
     public IActionResult Gallery()
     {
@@ -78,7 +80,7 @@ public class ImagesController : Controller
 
         var images = _database.Images
             .Where(i => i.UserId == CurrentUserId())
-            .Include(i => i.User)
+            //.Include(i => i.UserId)
             .ToList();
 
         return View(images);
