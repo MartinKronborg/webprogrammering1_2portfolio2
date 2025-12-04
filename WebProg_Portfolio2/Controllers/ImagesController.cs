@@ -48,7 +48,19 @@ public class ImagesController : Controller
         }
         return View();
     }
+
+    [HttpGet]
+    public IActionResult Gallery()
+    {
+        return RedirectToAction("Gallery", "Images");
+    }
+    
 }
+
+
+
+
+
 /*
 var post = new ImagePost {
     Title = title,

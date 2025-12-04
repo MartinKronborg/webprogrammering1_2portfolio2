@@ -33,7 +33,7 @@ public class AccountController : Controller
         }
 
         //EMAIL check regex
-        var emailRegex = new Regex(@"/^[a-zA-Z._-]+@[a-zA-Z._-]+\.[a-z]{2,10}$/");
+        var emailRegex = new Regex(@"^[a-zA-Z._-]+@[a-zA-Z._-]+\.[a-z]{2,10}$");
         if (!emailRegex.IsMatch(email))
         {
             ModelState.AddModelError("", "E-mail adresse ej valid");
@@ -44,14 +44,14 @@ public class AccountController : Controller
 
         var user = new UsersModel
         {
-            Username = username, Email = email, HashedPassword = password
+            Username = username, Email = email, HashedPassword = hash
         };
 
         _database.Users.Add(user);
         await _database.SaveChangesAsync();
 
         HttpContext.Session.SetInt32("UserId", user.Id);
-        return RedirectToAction("Gallery", "Image");
+        return RedirectToAction("Upload", "Images");
 
         /*
         //PASSWORD check regex
@@ -101,12 +101,14 @@ public class AccountController : Controller
         var hash = Convert.ToBase64String(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(password)));
         var user = _database.Users.FirstOrDefault(u =>
             (u.Email == emailOrUsername || u.Username == emailOrUsername) && u.HashedPassword == hash);
+       
         if (user == null)
         {
-            ModelState.AddModelError("", "Forkert login");
+            ModelState.AddModelError("", "Ukendt bruger");
             return View();
         }
-        HttpContext.Session.Remove("UserId");
-        return RedirectToAction("Login");
+        HttpContext.Session.SetInt32("UserId", user.Id);
+        return RedirectToAction("Upload", "Images");
+
     }
 }
