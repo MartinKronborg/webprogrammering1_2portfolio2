@@ -6,7 +6,7 @@
 
 $(document).ready(function() {
     $("#countBtn").click(function() {
-        $.get("/Image/GetCount").done(function(data) {
+        $.get("/Images/GetCount").done(function(data) {
             if (data.success) $("#countResult").text("Antal billeder: " + data.count);
             else alert("Du skal være logget ind.");
         });
