@@ -7,4 +7,6 @@ public class ImagesModel
     public string Description { get; set; }
     public string FilePath { get; set; }
     public int UserId { get; set; }
+    
+    public UsersModel? User { get; set; }
 }

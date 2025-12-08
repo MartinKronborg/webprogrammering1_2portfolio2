@@ -10,4 +10,13 @@ public class AppDbContext : DbContext
     
     public DbSet<UsersModel> Users { get; set; }
     public DbSet<ImagesModel> Images { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<ImagesModel>()
+            .HasOne(i => i.User)
+            .WithMany(u => u.Images)
+            .HasForeignKey(i => i.UserId);
+    }
+    
 }

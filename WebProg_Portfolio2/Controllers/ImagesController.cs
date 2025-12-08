@@ -71,7 +71,6 @@ public class ImagesController : Controller
         return View();
     }
 
-    //NOT working? Images don't show up in the gallery view
     [HttpGet]
     public IActionResult Gallery()
     {
@@ -79,8 +78,8 @@ public class ImagesController : Controller
             return RedirectToAction("Login", "Account");
 
         var images = _database.Images
-            .Where(i => i.UserId == CurrentUserId())
-            //.Include(i => i.UserId)
+            //.Where(i => i.UserId == CurrentUserId())
+            .Include(i => i.User)
             .ToList();
 
         return View(images);
