@@ -1,11 +1,31 @@
-<form method="post" enctype="multipart/form-data" asp-controller="Images" asp-action="Upload">
+@*<form novalidate="" method="post" enctype="multipart/form-data" asp-controller="Images" asp-action="Upload">
     <input type="text" name="title" placeholder="Titel" required />
     <textarea name="description" placeholder="Beskrivelse"></textarea>
     <input type="file" name="imageFile" accept="image/*" required />
     <button type="submit">Upload</button>
+</form>*@
+@model ImagesModel
+
+@Html.ValidationSummary(true)
+
+<form method="post" asp-action="Upload" asp-controller="Images" enctype="multipart/form-data">
+    <input asp-for="Title" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+
+    <textarea asp-for="Description"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+
+    <input type="file" name="imageFile" />
+
+    <button type="submit">Upload</button>
 </form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+
 
 <button id="countBtn">Hent antal billeder</button>
 <div id="countResult"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="~/js/site.js"></script>
+}
