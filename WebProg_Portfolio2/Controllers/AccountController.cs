@@ -14,13 +14,50 @@ public class AccountController : Controller
     {
         _database = database;
     }
-
+    
     [HttpGet]
     public IActionResult Register()
     {
         return View();
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Register(UsersModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            // Hvis regex eller required fejler, returneres view med fejlbeskeder
+            return View(model);
+        }
+
+        var hash = Convert.ToBase64String(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(model.HashedPassword)));
+
+        var user = new UsersModel
+        {
+            Username = model.Username,
+            Email = model.Email,
+            HashedPassword = hash
+        };
+
+        _database.Users.Add(user);
+        await _database.SaveChangesAsync();
+
+        HttpContext.Session.SetInt32("UserId", user.Id);
+        return RedirectToAction("Upload", "Images");
+    }
+
+    
+    /*---------------------------
+    
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+   
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(string username, string email, string password)
@@ -53,6 +90,8 @@ public class AccountController : Controller
         HttpContext.Session.SetInt32("UserId", user.Id);
         return RedirectToAction("Upload", "Images");
 
+        ---------------------------*/
+        
         /*
         //PASSWORD check regex
         if (!Regex.IsMatch(password, "[a-z]"))
@@ -85,8 +124,8 @@ public class AccountController : Controller
             return View();
         }
 
-        return View(); */
-    }
+        return View();
+    } */
 
     [HttpGet]
     public IActionResult Login()

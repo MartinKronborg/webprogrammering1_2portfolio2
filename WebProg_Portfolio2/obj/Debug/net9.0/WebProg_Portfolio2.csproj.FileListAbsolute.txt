@@ -253,5 +253,5 @@ C:\Users\emilr\Documents\SPILTEK\Git\webprogrammering1_portfolio_02\webprogramme
 C:\Users\emilr\Documents\SPILTEK\Git\webprogrammering1_portfolio_02\webprogrammering1_2portfolio2\WebProg_Portfolio2\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\emilr\Documents\SPILTEK\Git\webprogrammering1_portfolio_02\webprogrammering1_2portfolio2\WebProg_Portfolio2\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\emilr\Documents\SPILTEK\Git\webprogrammering1_portfolio_02\webprogrammering1_2portfolio2\WebProg_Portfolio2\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\emilr\Documents\SPILTEK\Git\webprogrammering1_portfolio_02\webprogrammering1_2portfolio2\WebProg_Portfolio2\obj\Debug\net9.0\compressed\idtgxgsdcg-{0}-g7l4m9j5ek-g7l4m9j5ek.gz
 C:\Users\emilr\Documents\SPILTEK\Git\webprogrammering1_portfolio_02\webprogrammering1_2portfolio2\WebProg_Portfolio2\obj\Debug\net9.0\compressed\3xfunmxgdy-{0}-trj3vg19ff-trj3vg19ff.gz
+C:\Users\emilr\Documents\SPILTEK\Git\webprogrammering1_portfolio_02\webprogrammering1_2portfolio2\WebProg_Portfolio2\obj\Debug\net9.0\compressed\idtgxgsdcg-{0}-ldtky2yk5u-ldtky2yk5u.gz

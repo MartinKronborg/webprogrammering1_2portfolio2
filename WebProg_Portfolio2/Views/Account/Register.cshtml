@@ -1,4 +1,4 @@
-@{
+@*@{
     ViewData["Title"] = "Register";
 }
 <h2>Register</h2>
@@ -14,6 +14,45 @@
     
     <button type="submit">Opret</button>
 </form>
-@section scripts {
-    <script src="~/js/site.js"></script> <!-- klient-side regex validation -->
+
+$1$ @section scripts { #1#
+$1$     <script src="~/js/site.js"></script> <!-- klient-side regex validation --> #1#
+$1$ } #1#
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
+
+@model WebProg_Portfolio2.Models.UsersModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label asp-for="Username"></label><br>
+        <input asp-for="Username" /><br>
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label><br>
+        <input asp-for="Email" /><br>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="HashedPassword"></label><br>
+        <input asp-for="HashedPassword" type="password" /><br>
+        <span asp-validation-for="HashedPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Opret</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
