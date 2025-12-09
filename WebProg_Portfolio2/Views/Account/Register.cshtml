@@ -3,9 +3,15 @@
 }
 <h2>Register</h2>
 <form method="post" asp-controller="Account" asp-action="Register">
-    <input name="username" placeholder="Brugernavn" required />
-    <input name="email" placeholder="E-mail" type="email" required />
-    <input name="password" placeholder="Adgangskode" type="password" required />
+    <label for="username">Brugernavn:</label><br>
+    <input name="username" placeholder="Brugernavn" required /><br>
+
+    <label for="email">Email:</label><br>
+    <input name="email" placeholder="E-mail" type="email" required /><br>
+
+    <label for="password">Adgangskode</label><br>
+    <input name="password" placeholder="Adgangskode" type="password" required /><br>
+    
     <button type="submit">Opret</button>
 </form>
 @section scripts {

@@ -1,10 +1,19 @@
 <form method="post" enctype="multipart/form-data" asp-controller="Images" asp-action="Upload">
-    <input type="text" name="title" placeholder="Titel" required />
-    <textarea name="description" placeholder="Beskrivelse"></textarea>
+
+    <label for="title">Titel:</label><br>
+    <input type="text" name="title" placeholder="Titel" required /><br>
+
+    <label for="description">Beskrivelse:</label><br>
+    <textarea name="description" placeholder="Beskrivelse"></textarea><br>
+    
     <input type="file" name="imageFile" accept="image/*" required />
     <button type="submit">Upload</button>
 </form>
 
+<br>
+<br>
+<br>
+<label for="countBtn">(AJAX-kald)</label><br>
 <button id="countBtn">Hent antal billeder</button>
 <div id="countResult"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

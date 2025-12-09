@@ -39,3 +39,28 @@ body {
     margin: 5px 0;
   }
 }
+
+body{
+  font-family: "Book Antiqua";
+}
+
+.navbar-nav {
+  background-color:black;
+  padding:10px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  color: lawngreen;
+  padding: 5px;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+th, td {
+  padding: 10px 20px;
+  text-align: left;
+}
