@@ -26,51 +26,50 @@ public class ImagesController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upload(ImagesModel iModel, IFormFile imageFile)
+    public async Task<IActionResult> Upload(IFormFile imageFile, string title, string description)
     {
-        if (CurrentUserId() == null)
-            return RedirectToAction("Login", "Account");
-
-        // Valider formularen (model)
-        if (!ModelState.IsValid)
-            return View(iModel);
-
+        if (CurrentUserId() == null) return RedirectToAction("Login", "Account");
         if (imageFile == null || imageFile.Length == 0)
         {
             ModelState.AddModelError("", "Vælg en fil");
-            return View(iModel);
+            return View();
         }
 
-        // File type check
+        // Simple sikkerhed: extension check
         var allowed = new[] { ".jpg", ".jpeg", ".png", ".gif" };
         var ext = Path.GetExtension(imageFile.FileName).ToLowerInvariant();
-
         if (!allowed.Contains(ext))
         {
             ModelState.AddModelError("", "Ugyldig filtype");
-            return View(iModel);
+            return View();
         }
 
         // Gem fil
         var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
         Directory.CreateDirectory(uploads);
-
-        var fileName = Guid.NewGuid() + ext;
+        var fileName = Guid.NewGuid().ToString() + ext;
         var filePath = Path.Combine(uploads, fileName);
-
         using (var stream = System.IO.File.Create(filePath))
+        {
             await imageFile.CopyToAsync(stream);
+        }
 
-        // GEM DATABASE-POST
-        iModel.FilePath = "/uploads/" + fileName;
-        iModel.UserId = CurrentUserId().Value;
+        //NOT WORKING - ADDING IMAGE METADATA TO DB
+        var post = new ImagesModel
+        {
+            Title = title,
+            Description = description,
+            FilePath = "/uploads/" + fileName,
+            UserId = CurrentUserId().Value
+        };
 
-        _database.Images.Add(iModel);
+        _database.Images.Add(post);
         await _database.SaveChangesAsync();
 
         return RedirectToAction("Gallery");
-    }
 
+        return View();
+    }
 
     [HttpGet]
     public IActionResult Gallery()
