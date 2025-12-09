@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebProg_Portfolio2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f8a614539914792727d9feb7bcb562e7925eb3c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+212707a055fc6f353c5d9479dfccf1db90ce4c8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebProg_Portfolio2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebProg_Portfolio2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
