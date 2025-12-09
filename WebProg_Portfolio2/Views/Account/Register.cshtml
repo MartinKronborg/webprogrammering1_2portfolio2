@@ -1,51 +1,26 @@
-@*@{
-    ViewData["Title"] = "Register";
-}
-<h2>Register</h2>
-<form method="post" asp-controller="Account" asp-action="Register">
-    <label for="username">Brugernavn:</label><br>
-    <input name="username" placeholder="Brugernavn" required /><br>
-
-    <label for="email">Email:</label><br>
-    <input name="email" placeholder="E-mail" type="email" required /><br>
-
-    <label for="password">Adgangskode</label><br>
-    <input name="password" placeholder="Adgangskode" type="password" required /><br>
-    
-    <button type="submit">Opret</button>
-</form>
-
-$1$ @section scripts { #1#
-$1$     <script src="~/js/site.js"></script> <!-- klient-side regex validation --> #1#
-$1$ } #1#
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@
-
 @model WebProg_Portfolio2.Models.UsersModel
 
 @{
     ViewData["Title"] = "Register";
 }
 
-<h2>Register</h2>
+<h2>Registrer</h2>
 
 <form asp-action="Register" method="post">
     <div>
-        <label asp-for="Username"></label><br>
+        <label asp-for="Username">Brugernavn:</label><br>
         <input asp-for="Username" /><br>
         <span asp-validation-for="Username" class="text-danger"></span>
     </div>
 
     <div>
-        <label asp-for="Email"></label><br>
+        <label asp-for="Email">Email:</label><br>
         <input asp-for="Email" /><br>
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div>
-        <label asp-for="HashedPassword"></label><br>
+        <label asp-for="HashedPassword">Adgangskode:</label><br>
         <input asp-for="HashedPassword" type="password" /><br>
         <span asp-validation-for="HashedPassword" class="text-danger"></span>
     </div>

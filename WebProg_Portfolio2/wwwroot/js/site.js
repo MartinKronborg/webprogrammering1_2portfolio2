@@ -11,12 +11,4 @@ $(document).ready(function() {
             else alert("Du skal være logget ind.");
         });
     });
-
-    // Client-side regex validation for register form
-    $("#registerForm").on("submit", function() {
-        const email = $("#email").val();
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!re.test(email)) { alert("Ugyldig email"); return false; }
-        return true;
-    });
 });

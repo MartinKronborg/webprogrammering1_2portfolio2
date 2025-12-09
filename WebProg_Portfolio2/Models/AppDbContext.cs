@@ -18,5 +18,4 @@ public class AppDbContext : DbContext
             .WithMany(u => u.Images)
             .HasForeignKey(i => i.UserId);
     }
-    
 }

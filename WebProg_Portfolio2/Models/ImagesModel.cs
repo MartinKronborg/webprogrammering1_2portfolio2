@@ -2,7 +2,7 @@ namespace WebProg_Portfolio2.Models;
 
 public class ImagesModel
 {
-    public int Id { get; set; } //the PK
+    public int Id { get; set; } //the Primary key
     public string Title { get; set; }
     public string Description { get; set; }
     public string FilePath { get; set; }

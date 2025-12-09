@@ -1,7 +1,5 @@
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using WebProg_Portfolio2.Models;
-using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebProg_Portfolio2.Controllers;
@@ -35,7 +33,7 @@ public class ImagesController : Controller
             return View();
         }
 
-        // Simple sikkerhed: extension check
+        //Extension check
         var allowed = new[] { ".jpg", ".jpeg", ".png", ".gif" };
         var ext = Path.GetExtension(imageFile.FileName).ToLowerInvariant();
         if (!allowed.Contains(ext))
@@ -44,7 +42,7 @@ public class ImagesController : Controller
             return View();
         }
 
-        // Gem fil
+        //Saves the file
         var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
         Directory.CreateDirectory(uploads);
         var fileName = Guid.NewGuid().ToString() + ext;
@@ -53,8 +51,8 @@ public class ImagesController : Controller
         {
             await imageFile.CopyToAsync(stream);
         }
-
-        //NOT WORKING - ADDING IMAGE METADATA TO DB
+        
+        //Creates the model and adds the image title/description
         var post = new ImagesModel
         {
             Title = title,
@@ -67,8 +65,6 @@ public class ImagesController : Controller
         await _database.SaveChangesAsync();
 
         return RedirectToAction("Gallery");
-
-        return View();
     }
 
     [HttpGet]
@@ -78,13 +74,13 @@ public class ImagesController : Controller
             return RedirectToAction("Login", "Account");
 
         var images = _database.Images
-            //.Where(i => i.UserId == CurrentUserId())
             .Include(i => i.User)
             .ToList();
 
         return View(images);
     }
 
+    //The AJAX call
     [HttpGet]
     public IActionResult GetCount()
     {

@@ -1,8 +1,5 @@
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using WebProg_Portfolio2.Models;
-using System.Security.Cryptography;
-using Microsoft.EntityFrameworkCore;
 
 namespace WebProg_Portfolio2.Controllers;
 
